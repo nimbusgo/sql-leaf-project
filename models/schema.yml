@@ -1,0 +1,9 @@
+---
+version: 2
+models:
+- name: "convert_orders_aggregate"
+  columns:
+  - name: "total_price_micro_dollars"
+    dataType:
+      type: "Bigint"
+  tests: []

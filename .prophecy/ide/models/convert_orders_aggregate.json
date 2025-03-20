@@ -1,0 +1,124 @@
+{
+  "id" : "convert_orders_aggregate",
+  "metainfo" : {
+    "label" : "convert_orders_aggregate",
+    "autoLayout" : false,
+    "staleState" : "none",
+    "sourceSuggestions" : {
+      "sources" : [ ]
+    },
+    "version" : 3
+  },
+  "processes" : {
+    "convert_orders_aggregate##U3RIOe2h" : {
+      "id" : "convert_orders_aggregate##U3RIOe2h",
+      "component" : "TargetModel",
+      "metadata" : {
+        "label" : "convert_orders_aggregate",
+        "x" : -20,
+        "y" : 0,
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "customQueryDisabled" : true,
+        "customQuery" : false,
+        "incrementalEditorDisabled" : true,
+        "query" : "SELECT * \n\nFROM Reformat_1\n",
+        "incrementalKey" : false,
+        "incremental" : {
+          "expression" : "true"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "OIGGPghu",
+          "slug" : "Reformat_1"
+        } ],
+        "outputs" : [ {
+          "id" : "Ny6dxlmw",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      }
+    },
+    "ZMeyd54Q4wwuJBaBbkVAC" : {
+      "id" : "ZMeyd54Q4wwuJBaBbkVAC",
+      "component" : "Model",
+      "metadata" : {
+        "label" : "aggregate_orders",
+        "slug" : "aggregate_orders",
+        "x" : -480,
+        "y" : 0,
+        "phase" : 0
+      },
+      "properties" : {
+        "table" : {
+          "name" : "aggregate_orders",
+          "sourceType" : "Model",
+          "alias" : ""
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "8Nr9q-xh8bxniX--oeZVE",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      }
+    },
+    "HxtEqGdLfNxFglOCOvZAZ$$jTA66tllL_IhghGKQmzIY" : {
+      "id" : "HxtEqGdLfNxFglOCOvZAZ$$jTA66tllL_IhghGKQmzIY",
+      "component" : "Reformat",
+      "metadata" : {
+        "label" : "Reformat_1",
+        "slug" : "Reformat_1",
+        "x" : -260,
+        "y" : 0,
+        "phase" : 0,
+        "macroDependencies" : [ ],
+        "comment" : "Converts total order prices into micro-dollars for precise financial analysis.",
+        "autoUpdateComment" : true
+      },
+      "properties" : {
+        "columnsSelector" : [ "7OVApCUqG1ch1ociPYwqt$$omZB6mBPy5Ik52zqZQKOM##o_totalprice" ],
+        "expressions" : [ {
+          "expression" : {
+            "expression" : "CAST(CAST(o_totalprice AS DECIMAL (38, 2)) * 1000000 AS LONG)"
+          },
+          "alias" : "total_price_micro_dollars",
+          "_row_id" : "1619328134"
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "7OVApCUqG1ch1ociPYwqt$$omZB6mBPy5Ik52zqZQKOM",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "D8UsAnJRnPrhadHQQSbk7$$bVPEgaz0K83vTOMc_Vb7k",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      }
+    }
+  },
+  "connections" : [ {
+    "id" : "S3nQ8uJWJkZyUbZKJsEBB$$6oDswjMkCVWd94qEdqM3T",
+    "source" : "ZMeyd54Q4wwuJBaBbkVAC",
+    "sourcePort" : "8Nr9q-xh8bxniX--oeZVE",
+    "target" : "HxtEqGdLfNxFglOCOvZAZ$$jTA66tllL_IhghGKQmzIY",
+    "targetPort" : "7OVApCUqG1ch1ociPYwqt$$omZB6mBPy5Ik52zqZQKOM"
+  }, {
+    "id" : "9_tH-lRp83wSDcLZBzqg-$$wzouL3bhVUIEOYMc3-zdy",
+    "source" : "HxtEqGdLfNxFglOCOvZAZ$$jTA66tllL_IhghGKQmzIY",
+    "sourcePort" : "D8UsAnJRnPrhadHQQSbk7$$bVPEgaz0K83vTOMc_Vb7k",
+    "target" : "convert_orders_aggregate##U3RIOe2h",
+    "targetPort" : "OIGGPghu"
+  } ],
+  "component" : "Model"
+}

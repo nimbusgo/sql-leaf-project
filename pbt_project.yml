@@ -1,0 +1,73 @@
+name: sql_leaf_project
+description: ''
+version: 0.0.1
+author: nimbus+demo@prophecy.io
+language: sql
+buildSystem: ''
+buildSystemDetails: null
+pipelines: {}
+datasets: {}
+templates: {}
+jobs: {}
+gemContainer:
+  languageVersion: ''
+  gemLibsVersion: ''
+  gems: {}
+  dependencies: null
+functions:
+  author: null
+  createdAt: '2025-03-20 18:55:31'
+  udfs: {}
+  udafs: {}
+  expressions: {}
+  airflowFunctions: {}
+  businessRules: {}
+subgraphs: {}
+sqlModels:
+  .prophecy/metadata/sqlmodels/convert_orders_aggregate:
+    name: convert_orders_aggregate
+    schema:
+      entityType: ''
+      providerType: Databricks
+      fields:
+      - name: total_price_micro_dollars
+        dataType:
+          type: Bigint
+    description: null
+    author: nimbus+demo@prophecy.io
+    files:
+    - models/convert_orders_aggregate.sql
+    - .prophecy/ide/models/convert_orders_aggregate.json
+    - models/schema.yml
+    sqlDependencies:
+      models: []
+      datasets: []
+      seeds: []
+      sources: []
+      snapshots: []
+    createdAt: '2025-03-20 18:56:33'
+sqlSnapshots: {}
+sqlTests: {}
+sqlMacros:
+  .prophecy/metadata/sqlmacros/generate_schema_name:
+    name: generate_schema_name
+    macroType: expression
+    description: null
+    author: nimbus+demo@prophecy.io
+    files:
+    - macros/generate_schema_name.sql
+    - .prophecy/ide/macros/generate_schema_name.json
+    createdAt: '2025-03-20 18:55:35'
+sqlSeeds: {}
+sqlSources: {}
+sqlUnreferencedSources: {}
+sqlPipeline:
+  name: sqlPipeline
+  description: null
+  author: nimbus+demo@prophecy.io
+  createdAt: '2025-03-20 18:55:31'
+dependencies: []
+projectDependencies: {}
+flags:
+  shouldAddDefaultDependenciesIfAbsent: true
+pipelineConfigurations: {}
